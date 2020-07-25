@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% block head %}
+    <title>Gym Manager</title>
+  {% endblock %}
+  
+  <link rel="icon" href="src/img/favicon.ico.png" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>
+        <img src="/img/logoRocketSeatRoxo.png" alt="RocketSeat's logo">
+      </h1>
+    </div>
+    <div class="nav">
+      <a class="links active" href="/">Instructors</a>
+      <a class="links" href="/members">Members</a>
+    </div>
+    <div class="btnOpenMenu">
+      <i class="material-icons">menu</i>
+    </div>
+    <div class="btnCloseMenu">
+      <i class="material-icons">close</i>
+    </div>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  {# <footer>
+    <div class="container">
+      <a href="https://github.com/chrisleo-usa" target="_blank" class="links">Github</a>
+      <a href="http://www.christopheralves.com/" target="_blank" class="links">Meu Site</a>
+      <a href="https://www.linkedin.com/in/chrisleoalves/" target="_blank" class="links">Linkedin</a>
+    </div>
+  </footer> #}
+  
+  <script src="/scripts.js"></script>
+</body>
+</html>
