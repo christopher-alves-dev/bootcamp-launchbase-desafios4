@@ -18,12 +18,12 @@ btnCloseMenuMobile.addEventListener('click', function() {
 // === Individual Page ===
 const cards = document.querySelectorAll('.card');
 
-for (let card of cards) {
-  card.addEventListener('click', function() {
-    //pegar o atributo id 
-    const addressId = card.getAttribute('id');
+// for (let card of cards) {
+//   card.addEventListener('click', function() {
+//     //pegar o atributo id 
+//     const addressId = card.getAttribute('id');
    
-    window.location.href = `/course/${addressId}`;
+//     window.location.href = `/course/${addressId}`;
     
-  })
-}
+//   })
+// }
