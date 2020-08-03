@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.createInstructorCard {
+  display: grid;
+  grid-template-rows: 40% 60%;
+  width: 80%;
+  min-height: 800px;
+  background-color: white;
+  margin: 45px auto;
+  -webkit-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.4); 
+  box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.7);
+  animation-name: up;
+  animation-duration: 700ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.createInstructorCard .avatar {
+  background: url(https://source.unsplash.com/collection/8353395/320x320) no-repeat center center;
+}
+
+.createInstructorCard .details {
+  padding: 8px 16px;
+}
+
+.createInstructorCard .details h3 {
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+
+.createInstructorCard .details .itemsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px 0;
+  grid-template-areas: 
+  "avatar"
+  "name"
+  "birth" 
+  "gender"
+  "support"
+  "graduation"
+  "button"
+}
+
+.createInstructorCard .details .item:nth-child(1) {
+  grid-area: avatar;
+}
+
+.createInstructorCard .details .item:nth-child(2) {
+  grid-area: name;
+}
+
+.createInstructorCard .details .item:nth-child(3) {
+  grid-area: birth;
+}
+
+.createInstructorCard .details .item:nth-child(4) {
+  grid-area: gender;
+}
+
+.createInstructorCard .details .item:nth-child(5) {
+  grid-area: graduation;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.createInstructorCard .details .item:nth-child(6) {
+  grid-area: support;
+}
+
+.createInstructorCard .details .item:nth-child(7) {
+  grid-area: button;
+}
+
+.createInstructorCard .details .item {
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.createInstructorCard .details .item div:nth-child(1){
+  font-size: 14px;
+  color: #777;
+  line-height: 24px;
+  letter-spacing: 0.7px;
+}
+
+.createInstructorCard .details .item div:nth-child(2){
+  font-size: 15px;
+  color: #555;
+  font-weight: bold;
+}
+
+.createInstructorCard .details .item span {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--secondary-color);
+  border-radius: 16px;
+  color: #777;
+  margin-right: 4px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* === FORM === */
+input {
+  width: 80%;
+  outline: none;
+}
+
+input[type="date"] {
+  width: initial;
+}
+
+input[type="radio"] {
+  width: initial;
+  margin-right: 4px;
+}
+
+input::placeholder {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+button[type="submit"],
+a.button {
+  padding: 8px 32px;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+}
+
+select {
+  font-size: 16px;
+  color: #555;
+}
+
+@keyframes up {
+  from {
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 400px) {
+  .createInstructorCard .avatar {
+    background: url(https://source.unsplash.com/collection/8353395/600x600) no-repeat center center / cover;
+  }
+
+}
+
+@media (min-width: 600px) {
+  .createInstructorCard {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    min-height: 400px;
+  }
+
+  .createInstructorCard .details {
+    padding: 16px 24px;
+  }
+
+  .createInstructorCard .details h3 {
+    text-align: left;
+  }
+}
