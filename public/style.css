@@ -1,3 +1,5 @@
+@import 'createInstructor.css';
+
 :root {
   --primary-color: #7159c1;
   --secondary-color: #f7df1e;
@@ -122,7 +124,7 @@ header .btnCloseMenu i {
   display: grid;
   grid-template-rows: 40% 60%;
   width: 80%;
-  height: 600px;
+  min-height: 700px;
   background-color: white;
   margin: 45px auto;
   -webkit-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.4); 
@@ -135,12 +137,13 @@ header .btnCloseMenu i {
 }
 
 .card .avatar {
-  background: url(https://source.unsplash.com/collection/8353395/400x400) no-repeat center center;
+  background: url(https://source.unsplash.com/collection/8353395/400x400) no-repeat center center / cover;
   width: 100%;
 }
 
 .card .details {
   padding: 8px 16px;
+  height: auto;
 }
 
 .card .details h3 {
@@ -159,9 +162,10 @@ header .btnCloseMenu i {
   grid-template-areas: 
   "name name"
   "age age"
-  "educationalLevel educationalLevel"
-  "typeClass since"
+  "gender gender"
+  "graduation since"
   "support support"
+  "editButton editButton"
 }
 
 .details .item:nth-child(1) {
@@ -173,11 +177,11 @@ header .btnCloseMenu i {
 }
 
 .details .item:nth-child(3) {
-  grid-area: educationalLevel;
+  grid-area: gender;
 }
 
 .details .item:nth-child(4) {
-  grid-area: typeClass;
+  grid-area: graduation;
 }
 
 .details .item:nth-child(5) {
@@ -187,6 +191,11 @@ header .btnCloseMenu i {
 
 .details .item:nth-child(6) {
   grid-area: since;
+}
+
+.details .button {
+  grid-area: editButton;
+  text-decoration: none;
 }
 
 .details .item {
@@ -232,7 +241,7 @@ header .btnCloseMenu i {
 
 @media (min-width: 400px) {
   .card .avatar {
-    background: url(https://source.unsplash.com/collection/8353395/600x600) no-repeat center center;
+    background: url(https://source.unsplash.com/collection/8353395/600x600) no-repeat center center / cover;
   }
 
 }
@@ -242,7 +251,7 @@ header .btnCloseMenu i {
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: auto;
-    max-height: 400px;
+    min-height: 400px;
   }
 
   .card .details {

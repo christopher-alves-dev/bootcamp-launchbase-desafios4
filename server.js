@@ -3,6 +3,9 @@ const nunjucks = require('nunjucks');
 const routes = require('./routes')
 const server = express();
 
+//Middleware responsável por fazer funcionar o req.body, que é para receber os dados enviados através do method POST. 
+server.use(express.urlencoded({ extended: true }))
+
 server.use(express.static('public'));
 server.use(routes)
 server.set("view engine", "njk");
