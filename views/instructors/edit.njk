@@ -1,17 +1,33 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-<form class="createInstructorCard" method="POST" action="/instructors">
+<div class="createInstructorCard">
   <section class="avatar" style=""></section>
+
   <section class="details">
-    <h3>Editar Instrutor(a)</h3>
-
-    <div class="itemsContainer">
+    <form method="POST" action="/instructors?_method=PUT">
       
-      {% include 'instructors/fields.njk' %}
+      <h3>Editar Instrutor(a)</h3>
 
-    </div>
+      <div class="itemsContainer">
+        
+        {% include 'instructors/fields.njk' %}
+
+        {# Campo Hidden para que possa ser capturado o ID do instrutor na hora que for editar algum dado.  #}
+        <input type="hidden" name="id" value="{{ instructor.id }}">
+
+      </div>
+    
+    </form>
+
+    <form id="formDelete" action="/instructors?_method=DELETE" method="POST">
+      <input type="hidden" name="id" value="{{ instructor.id }}">
+      <button type="submit">Deletar</button>
+    </form>
+
   </section>
-</form>
+ 
+</div>
+
 
 {% endblock content %}

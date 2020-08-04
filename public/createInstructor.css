@@ -10,7 +10,8 @@
   display: grid;
   grid-template-rows: 40% 60%;
   width: 80%;
-  min-height: 800px;
+  max-width: 1200px;
+  min-height: 900px;
   background-color: white;
   margin: 45px auto;
   -webkit-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.4); 
@@ -51,7 +52,7 @@
   "gender"
   "support"
   "graduation"
-  "button"
+  "saveButton"
 }
 
 .createInstructorCard .details .item:nth-child(1) {
@@ -80,7 +81,7 @@
 }
 
 .createInstructorCard .details .item:nth-child(7) {
-  grid-area: button;
+  grid-area: saveButton;
 }
 
 .createInstructorCard .details .item {
@@ -141,6 +142,13 @@ a.button {
   border-radius: 4px;
   color: white;
   text-align: center;
+  cursor: pointer;
+}
+
+#formDelete button[type="submit"] {
+  width: 100%;
+  background-color: lightcoral;
+  margin-top: 16px;
 }
 
 select {
@@ -181,3 +189,4 @@ select {
     text-align: left;
   }
 }
+

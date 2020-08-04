@@ -115,4 +115,59 @@ exports.post = function(req, res) {
   // return res.send(req.body);
 }
 
+//Função para atualizar os dados e salvar no backend. 
+exports.put = function(req, res) {
+  //Precisamos pegar os dados que já temos e salvar apenas os que estão diferentes. 
+  const { id } = req.body;
 
+  // Iniciamos o index como 0
+  let index = 0
+
+  const foundInstructor = data.instructors.find(function(instructor, foundIndex) {
+    //Se o id da página for igual ao id do instrutor
+    if (id == instructor.id) {
+      //adicionar no index o foundIndex. Então se o index for 7 o foundIndex será 7 também. 
+      index = foundIndex;
+      return true;
+    }
+  })
+
+  if (!foundInstructor) return res.send('instructor not found!');
+
+  const instructor = {
+    //Pegamos todos os dados que já tinhamos e espalhamos tudo dentro. 
+    ...foundInstructor,
+    //Pegamos também todos os dados do req.body, até mesmo os que não foram alterados, não há problema pois não teremos conflito entre os dados que não foram alterados.  
+    ...req.body,
+    birth: Date.parse(req.body.birth)
+  }
+
+  
+  data.instructors[index] = instructor;
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
+    if(err) return res.send("Write file error!");
+
+    return res.redirect(`/instructors/${id}`);
+  })
+
+}
+
+
+exports.delete = function(req, res) {
+  const { id } = req.body
+
+  //Função filter é igual uma estrutura de repetição, para cada instrutor ele irá rodar a função e enviar para dentro o instrutor, precisando retornar um true ou false. 
+  const filteredInstructors = data.instructors.filter(function(instructor) {
+    // se verdadeiro, pode colocar dentro do novo array. Se falso, retira do array. 
+    return instructor.id != id;
+  })
+
+  data.instructors = filteredInstructors;
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
+    if(err) return res.send("Write file error!");
+
+    return res.redirect("/instructors");
+  })
+
+}
