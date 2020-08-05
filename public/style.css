@@ -85,6 +85,7 @@ header .btnOpenMenu i,
 header .btnCloseMenu i {
   font-size: 40px;
   cursor: pointer;
+  color: var(--primary-color);
 }
 
 @media (min-width: 600px) {
@@ -98,7 +99,8 @@ header .btnCloseMenu i {
   header .nav .links {
     position: relative;
     display: inline-block;
-    border-bottom: none;
+    border: none;
+    background: none;
   }
 
   header .nav .links + .links {
@@ -129,9 +131,9 @@ header .btnCloseMenu i {
 /* === INSTRUCTORS === */
 .card {
   display: grid;
-  grid-template-rows: 40% 60%;
+  grid-template-rows: 1.5fr 2fr;
   width: 80%;
-  min-height: 700px;
+  max-width: 1100px;
   background-color: white;
   margin: 45px auto;
   -webkit-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.4); 
@@ -143,9 +145,14 @@ header .btnCloseMenu i {
   opacity: 0;
 }
 
-.card .avatar {
-  background: url(https://source.unsplash.com/collection/8353395/400x400) no-repeat center center / cover;
-  width: 100%;
+@keyframes up {
+  from {
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .card .details {
@@ -236,21 +243,92 @@ header .btnCloseMenu i {
   font-size: 12px;
 }
 
-@keyframes up {
-  from {
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-  }
+/* === Table Mobile === */
+.tableContainer {
+  display: block;
+  padding: 24px;
 }
 
-@media (min-width: 400px) {
-  .card .avatar {
-    background: url(https://source.unsplash.com/collection/8353395/600x600) no-repeat center center / cover;
-  }
+.tableMobile,
+.tableDesktop {
+  border-spacing: 0;
+}
 
+.tableMobile thead tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0 16px;
+  text-transform: uppercase;
+  color: #777;
+  font-size: 14px;
+}
+
+.tableMobile tbody tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "avatar-name services"
+  "avatar-name button";
+  align-items: center;
+  gap: 16px;
+}
+
+.tableMobile tbody tr td:nth-child(1) {
+  grid-area: avatar-name;
+  text-align: center;
+}
+
+.tableMobile tbody tr td:nth-child(2) {
+  grid-area: services;
+  text-align: center;
+}
+
+.tableMobile tbody tr td:nth-child(3) {
+  grid-area: button;
+  text-align: center;
+}
+
+.tableMobile tbody tr td {
+  font-size: 14px;
+}
+
+.tableMobile thead tr, .tableMobile tbody tr {
+  padding: 16px;
+  border-bottom: 1px solid #d9d9d9;
+}
+ 
+.tableMobile tbody tr:last-child {
+  border: none;
+}
+
+.tableMobile tbody tr td:first-child {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+}
+
+.tableMobile tbody tr td:first-child span {
+  width: 48px;
+  height: 48px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 3px 1px 6px -4px black;
+  border: 2px solid var(--primary-color);
+  margin: 0 auto;
+}
+
+.tableMobile tbody td a {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  font-size: 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.tableDesktop {
+  display: none;
 }
 
 @media (min-width: 600px) {
@@ -268,4 +346,65 @@ header .btnCloseMenu i {
   .card .details h3 {
     text-align: left;
   }
+
+  
+  .tableMobile {
+    display: none;
+  }
+
+  /* === Table Tablet/Desktop === */
+  .tableContainer {
+    display: block;
+    padding: 40px;
+  }
+
+  .tableDesktop {
+    display: block;
+  }
+
+  .tableDesktop td, 
+  .tableDesktop th {
+    padding: 16px 8px;
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  .tableDesktop th {
+    text-transform: uppercase;
+    color: #777;
+    font-size: 14px;
+  }
+
+  .tableDesktop tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .tableDesktop tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+  }
+
+  .tableDesktop tbody tr td:first-child span {
+    width: 48px;
+    height: 48px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 3px 1px 6px -4px black;
+    border: 2px solid var(--primary-color);
+  }
+
+  .tableDesktop tbody tr td:last-child a {
+    background-color: var(--primary-color);
+    padding: 8px 16px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  .tableDesktop th:last-child {
+    text-align: center;
+  }
+
 }

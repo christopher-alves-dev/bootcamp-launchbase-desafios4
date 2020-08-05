@@ -7,6 +7,10 @@ const data = require("./data.json");
 const Intl = require('intl');
 const { age, date, graduation, gender } = require("./utils");
 
+exports.index = function(req, res) {
+  return res.render("instructors/index", { instructors: data.instructors })
+}
+
 //Função para mostrar a página do instrutor selecionado através do ID. 
 exports.show = function(req, res) {
   //retirar o ID e colocá-lo como req.params
@@ -139,11 +143,14 @@ exports.put = function(req, res) {
     ...foundInstructor,
     //Pegamos também todos os dados do req.body, até mesmo os que não foram alterados, não há problema pois não teremos conflito entre os dados que não foram alterados.  
     ...req.body,
-    birth: Date.parse(req.body.birth)
+    birth: Date.parse(req.body.birth),
+    //Constructor Number transforma o que estiver ali dentro em número. Ao editar o avatar_url, o Id estava ficando como string, desta maneira o Number converterá para number. 
+    id: Number(req.body.id)
   }
 
   
   data.instructors[index] = instructor;
+  
   fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
     if(err) return res.send("Write file error!");
 

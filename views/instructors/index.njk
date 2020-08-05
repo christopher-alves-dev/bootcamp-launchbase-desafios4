@@ -1,60 +1,56 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-  <div class="card">
-    <section class="avatar" style=""></section>
-    <section class="details">
-      <h3>Detalhes</h3>
+  <div class="card tableContainer">
+    {# === Table Mobile === #}
+    <table class="tableMobile" width="100%">
+      <thead>
+        <tr>
+          <th>Instructor</th>
+          <th>Atendimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for instructor in instructors %}
+        <tr>
+          <td>
+            <span style="background-image: url({{instructor.avatar_url}})"></span>
+            {{instructor.name}}
+          </td>
+          <td>{{instructor.services}}</td>
+          <td>
+            <a href="/instructors/{{instructor.id}}">Ver</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-      <div class="itemsContainer">
-        <div class="item">
-          <div>Instrutor</div>
-          <div>Christopher Leonardo Alves</div>
-        </div>
-
-        <div class="item">
-          <div>Idade</div>
-          <div>28 anos</div>
-        </div>
-
-        <div class="item">
-          <div>Grau de escolaridade</div>
-          <div>
-            <select name="graduation" id="graduation">
-              <option value="empty"></option>
-              <option value="fundamental">Ensino Fundamental Completo</option>
-              <option value="medio">Ensino Médio Completo</option>
-              <option value="graduation">Ensino Superior Completo</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>Sexo</div>
-          <div>
-            <span>
-              <input type="radio" name="gender" checked>Feminino
-            </span>
-            <span>
-              <input type="radio" name="gender">Masculino
-            </span>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>Acompanhamento</div>
-          <div>
-            <span>Musculação</span>
-            <span>Crossfit</span>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>Desde</div>
-          <div>10/01/2019</div>
-        </div>
-      </div>
-    </section>
+    {# === Table Tablet/Desktop === #}
+    <table class="tableDesktop">
+      <thead>
+        <tr>
+          <th>Instructor</th>
+          <th>Atendimento</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for instructor in instructors %}
+        <tr>
+          <td> 
+            <span style="background-image: url({{instructor.avatar_url}}})"></span>
+            {{instructor.name}}
+          </td>
+          <td>{{instructor.services}}</td>
+          <td>
+            <a href="/instructors/{{instructor.id}}">Ver</a>
+          </td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
   </div>
 
 {% endblock content %}

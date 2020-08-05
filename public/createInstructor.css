@@ -8,10 +8,9 @@
 
 .createInstructorCard {
   display: grid;
-  grid-template-rows: 40% 60%;
+  grid-template-rows: 1.5fr 2fr;
   width: 80%;
   max-width: 1200px;
-  min-height: 900px;
   background-color: white;
   margin: 45px auto;
   -webkit-box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.4); 
@@ -22,10 +21,6 @@
   animation-fill-mode: forwards;
   opacity: 0;
   overflow: hidden;
-}
-
-.createInstructorCard .avatar {
-  background: url(https://source.unsplash.com/collection/8353395/320x320) no-repeat center center;
 }
 
 .createInstructorCard .details {
@@ -167,9 +162,9 @@ select {
 }
 
 @media (min-width: 400px) {
-  .createInstructorCard .avatar {
+  /* .createInstructorCard .avatar {
     background: url(https://source.unsplash.com/collection/8353395/600x600) no-repeat center center / cover;
-  }
+  } */
 
 }
 
