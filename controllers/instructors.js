@@ -2,64 +2,19 @@
 const fs = require('fs');
 
 //Para que os dados antigos não sejam apagados pelos novos preenchidos, chamaremos o data.json. 
-const data = require("./data.json");
+const data = require("../data.json");
 //Necessário instalar o Intl pelo npm para substituir o do node, pois sem ele a data do created_at fica em formato AAAA-MM-DD 
 const Intl = require('intl');
-const { age, date, graduation, gender } = require("./utils");
+const { age, date, graduation, gender } = require("../utils");
 
 exports.index = function(req, res) {
   return res.render("instructors/index", { instructors: data.instructors })
 }
 
-//Função para mostrar a página do instrutor selecionado através do ID. 
-exports.show = function(req, res) {
-  //retirar o ID e colocá-lo como req.params
-  const { id } = req.params;
-
-  //se data.instructors achar
-  const foundInstructor = data.instructors.find(function(instructor) {
-    //retornar verdadeiro se o id do instrutor for o mesmo id do adicionado na barra de navegação. 
-    return instructor.id == id
-  })
-
-  if (!foundInstructor) return res.send('instructor not found!');
-
-
-
-  const instructor = {
-    //tudo que tem dentro do objeto foundInstructor, spread operator
-    ...foundInstructor,
-    //formataremos a apresentação apenas destes dados. 
-    birth: age(foundInstructor.birth),
-    gender: gender(foundInstructor.gender),
-    services: foundInstructor.services.split(','),
-    graduation: graduation(foundInstructor.graduation),
-    created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at),
-  }
-
-  return res.render('instructors/show', { instructor });
+exports.create = function(req, res) {
+  return res.render('instructors/create');
 }
 
-//Função para editar os dados. 
-exports.edit = function(req, res) {
-  const { id } = req.params;
-
-  const foundInstructor = data.instructors.find(function(instructor) {
-    return instructor.id == id
-  })
-
-  if (!foundInstructor) return res.send('instructor not found!');
-
-  const instructor = {
-    ...foundInstructor,
-    birth: date(foundInstructor.birth)
-  }
-
-  return res.render('instructors/edit', { instructor })
-}
-
-
-//Função para create
 //exports.nomeDaFunção - Como é para capturar os dados que foram enviados pelo POST, chamamos de POST. 
 exports.post = function(req, res) {
   //Para capturar os dados pelo method GET, utilizamos req.query, já pelo method POST utilizamos o req.body
@@ -119,6 +74,53 @@ exports.post = function(req, res) {
   // return res.send(req.body);
 }
 
+//Função para mostrar a página do instrutor selecionado através do ID. 
+exports.show = function(req, res) {
+  //retirar o ID e colocá-lo como req.params
+  const { id } = req.params;
+
+  //se data.instructors achar
+  const foundInstructor = data.instructors.find(function(instructor) {
+    //retornar verdadeiro se o id do instrutor for o mesmo id do adicionado na barra de navegação. 
+    return instructor.id == id
+  })
+
+  if (!foundInstructor) return res.send('instructor not found!');
+
+
+
+  const instructor = {
+    //tudo que tem dentro do objeto foundInstructor, spread operator
+    ...foundInstructor,
+    //formataremos a apresentação apenas destes dados. 
+    birth: age(foundInstructor.birth),
+    gender: gender(foundInstructor.gender),
+    services: foundInstructor.services.split(','),
+    graduation: graduation(foundInstructor.graduation),
+    created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at),
+  }
+
+  return res.render('instructors/show', { instructor });
+}
+
+//Função para editar os dados. 
+exports.edit = function(req, res) {
+  const { id } = req.params;
+
+  const foundInstructor = data.instructors.find(function(instructor) {
+    return instructor.id == id
+  })
+
+  if (!foundInstructor) return res.send('instructor not found!');
+
+  const instructor = {
+    ...foundInstructor,
+    birth: date(foundInstructor.birth).iso
+  }
+
+  return res.render('instructors/edit', { instructor })
+}
+
 //Função para atualizar os dados e salvar no backend. 
 exports.put = function(req, res) {
   //Precisamos pegar os dados que já temos e salvar apenas os que estão diferentes. 
@@ -158,7 +160,6 @@ exports.put = function(req, res) {
   })
 
 }
-
 
 exports.delete = function(req, res) {
   const { id } = req.body

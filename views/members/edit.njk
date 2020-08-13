@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="createCard">
+  <section class="avatar" style="background: url({{member.avatar_url}}) no-repeat center / cover"></section>
+
+  <section class="details">
+    <form method="POST" action="/members?_method=PUT">
+      
+      <h3>Editar Membro</h3>
+
+      <div class="itemsContainer">
+        
+        {% include 'members/fields.njk' %}
+
+        {# Campo Hidden para que possa ser capturado o ID do instrutor na hora que for editar algum dado.  #}
+        <input type="hidden" name="id" value="{{ member.id }}">
+
+      </div>
+    
+    </form>
+
+    <form id="formDelete" action="/members?_method=DELETE" method="POST">
+      <input type="hidden" name="id" value="{{ member.id }}">
+      <button type="submit">Deletar</button>
+    </form>
+
+    
+
+  </section>
+ 
+</div>
+
+{% include '../delete.njk' %}
+
+{% endblock content %}

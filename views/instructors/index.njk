@@ -2,55 +2,29 @@
 
 {% block content %}
   <div class="card tableContainer">
-    {# === Table Mobile === #}
-    <table class="tableMobile" width="100%">
-      <thead>
-        <tr>
-          <th>Instructor</th>
-          <th>Atendimento</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for instructor in instructors %}
-        <tr>
-          <td>
-            <span style="background-image: url({{instructor.avatar_url}})"></span>
-            {{instructor.name}}
-          </td>
-          <td>{{instructor.services}}</td>
-          <td>
-            <a href="/instructors/{{instructor.id}}">Ver</a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
 
-    {# === Table Tablet/Desktop === #}
-    <table class="tableDesktop">
+    <a href="/instructors/create">Novo</a>
+    
+    <table width="100%" class="tableDesktop">
       <thead>
         <tr>
-          <th>Instructor</th>
+          <th>Instrutor</th>
           <th>Atendimento</th>
           <th>Ação</th>
         </tr>
       </thead>
       <tbody>
         {% for instructor in instructors %}
-        <tr>
-          <td> 
-            <span style="background-image: url({{instructor.avatar_url}}})"></span>
-            {{instructor.name}}
-          </td>
-          <td>{{instructor.services}}</td>
-          <td>
-            <a href="/instructors/{{instructor.id}}">Ver</a>
-          </td>
-        </tr>
+          <tr>
+            <td><span style="background-image: url({{instructor.avatar_url}})"></span>{{instructor.name}}</td>
+            <td>{{instructor.services}}</td>
+            <td><a href="/instructors/{{instructor.id}}">ver</a></td>
+          </tr>
         {% endfor %}
-        
+         
       </tbody>
     </table>
   </div>
+
 
 {% endblock content %}

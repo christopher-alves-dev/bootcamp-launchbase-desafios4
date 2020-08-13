@@ -1,8 +1,8 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-<div class="createInstructorCard">
-  <section class="avatar" style=""></section>
+<div class="createCard">
+  <section class="avatar" style="background: url({{instructor.avatar_url}}) no-repeat center / cover"></section>
 
   <section class="details">
     <form method="POST" action="/instructors?_method=PUT">
@@ -29,5 +29,6 @@
  
 </div>
 
+{% include '../delete.njk' %}
 
 {% endblock content %}

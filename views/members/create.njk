@@ -1,0 +1,17 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<form class="createCard" method="POST" action="/members">
+  <section class="avatar" style="background: no-repeat center / cover url(https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg"></section>
+  <section class="details">
+    <h3>Novo Membro</h3>
+
+    <div class="itemsContainer">
+      
+      {% include 'members/fields.njk' %}
+
+    </div>
+  </section>
+</form>
+
+{% endblock content %}

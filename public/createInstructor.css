@@ -6,7 +6,7 @@
   text-decoration: none;
 }
 
-.createInstructorCard {
+.createCard {
   display: grid;
   grid-template-rows: 1.5fr 2fr;
   width: 80%;
@@ -23,11 +23,11 @@
   overflow: hidden;
 }
 
-.createInstructorCard .details {
+.createCard .details {
   padding: 8px 16px;
 }
 
-.createInstructorCard .details h3 {
+.createCard .details h3 {
   font-size: 16px;
   text-align: center;
   text-transform: uppercase;
@@ -36,7 +36,7 @@
 }
 
 
-.createInstructorCard .details .itemsContainer {
+.createCard .details .itemsContainer {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 16px 0;
@@ -50,54 +50,54 @@
   "saveButton"
 }
 
-.createInstructorCard .details .item:nth-child(1) {
+.createCard .details .item:nth-child(1) {
   grid-area: avatar;
 }
 
-.createInstructorCard .details .item:nth-child(2) {
+.createCard .details .item:nth-child(2) {
   grid-area: name;
 }
 
-.createInstructorCard .details .item:nth-child(3) {
+.createCard .details .item:nth-child(3) {
   grid-area: birth;
 }
 
-.createInstructorCard .details .item:nth-child(4) {
+.createCard .details .item:nth-child(4) {
   grid-area: gender;
 }
 
-.createInstructorCard .details .item:nth-child(5) {
+.createCard .details .item:nth-child(5) {
   grid-area: graduation;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.createInstructorCard .details .item:nth-child(6) {
+.createCard .details .item:nth-child(6) {
   grid-area: support;
 }
 
-.createInstructorCard .details .item:nth-child(7) {
+.createCard .details .item:nth-child(7) {
   grid-area: saveButton;
 }
 
-.createInstructorCard .details .item {
+.createCard .details .item {
   padding-bottom: 4px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.createInstructorCard .details .item div:nth-child(1){
+.createCard .details .item div:nth-child(1){
   font-size: 14px;
   color: #777;
   line-height: 24px;
   letter-spacing: 0.7px;
 }
 
-.createInstructorCard .details .item div:nth-child(2){
+.createCard .details .item div:nth-child(2){
   font-size: 15px;
   color: #555;
   font-weight: bold;
 }
 
-.createInstructorCard .details .item span {
+.createCard .details .item span {
   display: inline-block;
   padding: 8px 16px;
   background-color: var(--secondary-color);
@@ -111,7 +111,7 @@
 }
 
 /* === FORM === */
-input {
+input, select {
   width: 80%;
   outline: none;
 }
@@ -162,25 +162,25 @@ select {
 }
 
 @media (min-width: 400px) {
-  /* .createInstructorCard .avatar {
+  /* .createCard .avatar {
     background: url(https://source.unsplash.com/collection/8353395/600x600) no-repeat center center / cover;
   } */
 
 }
 
 @media (min-width: 600px) {
-  .createInstructorCard {
+  .createCard {
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: auto;
     min-height: 400px;
   }
 
-  .createInstructorCard .details {
+  .createCard .details {
     padding: 16px 24px;
   }
 
-  .createInstructorCard .details h3 {
+  .createCard .details h3 {
     text-align: left;
   }
 }
