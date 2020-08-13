@@ -1,6 +1,6 @@
 # Life Manager
 
-#### Life Manager é uma plataforma que administra o cadastro de Instrutores e Membros de academia. 
+#### Life Manager é uma plataforma que administra o cadastro de Instrutores e Membros de uma academia. 
 
 
 ## Demonstração cadastro instrutor
