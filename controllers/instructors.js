@@ -18,7 +18,7 @@ exports.create = function(req, res) {
 //exports.nomeDaFunção - Como é para capturar os dados que foram enviados pelo POST, chamamos de POST. 
 exports.post = function(req, res) {
   //Para capturar os dados pelo method GET, utilizamos req.query, já pelo method POST utilizamos o req.body
-  //Retorna apenas os valores preenchidos no formulário HTML. 
+  //Retorna apenas as chaves dos dados que estão no formulário HTML. 
   const keys = Object.keys(req.body)
 
   //VALIDAÇÃO - Loop para que percorra todos os campos preenchidos e verificar se algum está vazio, se estiver, retornar uma mensagem para preencher, antes de enviar os dados para o banco de dados.
