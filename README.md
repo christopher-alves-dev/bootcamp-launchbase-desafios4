@@ -5,7 +5,7 @@
 
 ## Demonstração cadastro instrutor
 <p align="center">
-  <img width="500" height="500" src="https://github.com/chrisleo-usa/Gifs/blob/master/academyControl/academyControl.gif">
+  <img width="500" height="500" src="https://raw.githubusercontent.com/chrisleo-usa/Gifs/master/academyControl/academyControl.gif?token=AMKT7JMOT2OVWZCU4432CIC7G7RRK">
 </p>
 
 ## Getting started
