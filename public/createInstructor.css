@@ -40,43 +40,6 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 16px 0;
-  grid-template-areas: 
-  "avatar"
-  "name"
-  "birth" 
-  "gender"
-  "support"
-  "graduation"
-  "saveButton"
-}
-
-.createCard .details .item:nth-child(1) {
-  grid-area: avatar;
-}
-
-.createCard .details .item:nth-child(2) {
-  grid-area: name;
-}
-
-.createCard .details .item:nth-child(3) {
-  grid-area: birth;
-}
-
-.createCard .details .item:nth-child(4) {
-  grid-area: gender;
-}
-
-.createCard .details .item:nth-child(5) {
-  grid-area: graduation;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.createCard .details .item:nth-child(6) {
-  grid-area: support;
-}
-
-.createCard .details .item:nth-child(7) {
-  grid-area: saveButton;
 }
 
 .createCard .details .item {
@@ -159,13 +122,6 @@ select {
   to {
     opacity: 1;
   }
-}
-
-@media (min-width: 400px) {
-  /* .createCard .avatar {
-    background: url(https://source.unsplash.com/collection/8353395/600x600) no-repeat center center / cover;
-  } */
-
 }
 
 @media (min-width: 600px) {

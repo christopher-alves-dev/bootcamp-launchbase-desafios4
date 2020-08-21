@@ -33,7 +33,6 @@
   <div>Grau de escolaridade</div>
   <div>
     <select name="graduation" id="graduation">
-      <option value="empty"></option>
       <option value="medio" {% if instructor.graduation == 'medio' %} selected {% endif %}>Ensino Médio Completo</option>
       <option value="graduated" {% if instructor.graduation == 'graduated' %} selected {% endif %}>Ensino Superior Completo</option>
       <option value="masters" {% if instructor.graduation == 'masters' %} selected {% endif %}>Mestrado</option>

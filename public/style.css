@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #7159c1;
+  --primary-color-lighter: #7159c15b;
   --secondary-color: #f7df1e;
 }
 
@@ -168,48 +169,10 @@ header .btnCloseMenu i {
   margin-bottom: 8px;
 }
 
-
 .details .itemsContainer {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 1fr;
   grid-gap: 16px 0;
-  grid-template-areas: 
-  "name name"
-  "age age"
-  "gender gender"
-  "graduation since"
-  "support support"
-  "editButton editButton"
-}
-
-.details .item:nth-child(1) {
-  grid-area: name;
-}
-
-.details .item:nth-child(2) {
-  grid-area: age;
-}
-
-.details .item:nth-child(3) {
-  grid-area: gender;
-}
-
-.details .item:nth-child(4) {
-  grid-area: graduation;
-}
-
-.details .item:nth-child(5) {
-  grid-area: support;
-  border-bottom: none;
-}
-
-.details .item:nth-child(6) {
-  grid-area: since;
-}
-
-.details .button {
-  grid-area: editButton;
-  text-decoration: none;
 }
 
 .details .item {
@@ -243,11 +206,104 @@ header .btnCloseMenu i {
   font-size: 12px;
 }
 
+@media (min-width: 600px) {
+  .card {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    min-height: 400px;
+  }
 
-/* TO-DO: MOBILE TABLE */
+  .card .details {
+    padding: 16px 24px;
+  }
+
+  .card .details h3 {
+    text-align: left;
+  }
+
+}
+
+/* FILTER */
+.tableContainer .header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  grid-row-gap: 24px;
+}
+
+.tableContainer .header a,
+.tableContainer .header button {
+  width: 100%;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.tableContainer .header form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  grid-row-gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tableContainer .header form input {
+  border: 1px solid #eeeeee;
+  padding: 4px 8px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.tableContainer .header form input::placeholder {
+  font-size: 16px;
+}
+
+@media (min-width: 480px) {
+  .tableContainer .header {
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .tableContainer .header form {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr;
+    grid-column-gap: 8px;
+  }
+
+  .tableContainer .header a,
+  .tableContainer .header button {
+    width: 120px;
+  }
+
+  .tableContainer .header a,
+  .tableContainer .header button,
+  .tableContainer .header form input::placeholder {
+    font-size: 16px;
+  }
+
+  .tableContainer .header form input {
+    padding: 8px 16px;
+  }
+}
+
+@media (min-width:768px) {
+  .tableContainer .header {
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr;
+    margin-bottom: 24px;
+  }
+
+  .tableContainer .header form {
+    margin-bottom: 0px;
+  }
+}
+
+/* TABLE */
 .tableContainer {
   display: block;
-  padding: 40px;
+  padding: 20px;
 }
 
 .tableContainer table {
@@ -266,7 +322,6 @@ td, th {
 th {
   text-transform: uppercase;
   color: #777;
-  font-size: 14px;
 }
 
 tbody tr:last-child td {
@@ -295,7 +350,7 @@ tbody tr td:last-child a,
   padding: 8px 16px;
   text-transform: uppercase;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 4px;
 }
 
@@ -309,25 +364,94 @@ td:last-child {
   text-align: center;
 }
 
-
+.tableContainer tbody tr {
+  margin-bottom: 24px;
+}
 
 @media (min-width: 600px) {
-  .card {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-template-rows: auto;
-    min-height: 400px;
-  }
-
   .tableContainer {
     display: block;
   }
-  .card .details {
-    padding: 16px 24px;
+}
+
+@media (max-width: 767px) {
+  tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px 1fr;
+    align-items: center;
+  }
+}
+
+@media (max-width: 599px) {
+  table thead {
+    display: none;
   }
 
-  .card .details h3 {
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tbody tr {
+    font-size: 16px;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 8px;
+    font-size: 16px;
+    font-weight: bold;
     text-align: left;
   }
 
+  table tbody tr {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+  }
+
+  table tbody tr td:last-child {
+    border-bottom: none;
+  }
+
+  table tbody tr:last-child td {
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: var(--primary-color-lighter);
+  }
+
+  table tbody tr td:first-child {
+    display: block;
+  }
+
+  table tbody tr td:last-child {
+    text-align: right;
+  }
+
+  table tbody tr td span {
+    display: none;
+  }
+
+}
+
+@media (max-width: 479px) {
+
+  table tbody tr td:last-child a {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
 }

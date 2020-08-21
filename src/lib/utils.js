@@ -1,5 +1,5 @@
 module.exports = {
-  age: function age(timestamp) {
+  age(timestamp) {
     //estamos iniciando um novo objeto de data. 
   const today = new Date();
   const birthDate = new Date(timestamp);
@@ -48,7 +48,8 @@ module.exports = {
       month,
       year,
       iso: `${year}-${month}-${day}`,
-      birthday: `${day}/${month}`
+      birthday: `${day}/${month}`,
+      format: `${day}/${month}/${year}`
     }
   },
   graduation: function graduation(value) {
@@ -65,15 +66,5 @@ module.exports = {
     } else {
       return 'Masculino';
     }
-  },
-  bloodType: [
-    "A+",
-    "A-",
-    "B+",
-    "B-",
-    "AB+",
-    "AB-",
-    "O+",
-    "O-"
-  ]
+  }
 }
