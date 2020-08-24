@@ -19,6 +19,7 @@ Neste projeto utilizamos:
 * Express para o servidor;
 * Nodemon para atualização automática do Servidor. 
 * Browser-sync para atualização automática do Browser. 
+* PostgreSQL
 
 
 ## Desenvolvimento
