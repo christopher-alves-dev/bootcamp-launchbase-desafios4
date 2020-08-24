@@ -4,10 +4,41 @@ const Instructor = require('../models/Instructor');
 
 module.exports = {
   index(req, res) {
+    let { filter, page, limit } = req.query;
 
-    Instructor.all(function(instructors) {
-      return res.render("instructors/index", { instructors })
-    })
+    page = page || 1
+    // mesma coisa que if(page) {
+    //   page = page
+    // } else {
+    //   page = 1
+    // }
+
+    limit = limit || 2
+    let offset = limit * (page - 1);
+
+    const params = {
+      filter,
+      page,
+      limit,
+      offset,
+      callback(instructors) {
+        return res.render("instructors/index", { instructors, filter })
+      }
+    }
+
+    //Ao invés de colocar a callback function como parâmetro do paginate, nós podemos colocá-la como uma posição do params, que está sendo passado para dentro, ficando disponível também. 
+    Instructor.paginate(params)
+
+    // if (filter) {
+    //   Instructor.findBy(filter, function(instructors) {
+    //     return res.render("instructors/index", { instructors, filter })
+    //   })
+    // } else {
+    //   Instructor.all(function(instructors) {
+    //     return res.render("instructors/index", { instructors })
+    //   })
+    // }
+    
   },
   create(req, res) {
     return res.render('instructors/create');

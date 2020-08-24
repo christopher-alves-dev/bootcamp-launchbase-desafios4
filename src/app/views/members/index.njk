@@ -4,7 +4,7 @@
   <div class="card tableContainer">
 
     <a href="/members/create">Novo</a>
-    <table width="100%" class="tableDesktop">
+    <table width="100%">
       <thead>
         <tr>
           <th>Membro</th>
@@ -16,12 +16,12 @@
       <tbody>
         {% for member in members %}
           <tr>
-            <td>
+            <td data-label="Membro">
               <span style="background-image: url({{member.avatar_url}})"></span>{{member.name}}
             </td>
-            <td>{{member.height}}cm</td>
-            <td>{{member.weight}}kg</td>
-            <td><a href="/members/{{member.id}}">ver</a></td>
+            <td data-label="Altura (cm)">{{member.height}}cm</td>
+            <td data-label="Peso (kg)">{{member.weight}}kg</td>
+            <td data-label="Ação"><a href="/members/{{member.id}}">ver</a></td>
           </tr>
         {% endfor %}
          
