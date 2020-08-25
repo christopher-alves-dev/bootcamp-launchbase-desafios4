@@ -59,7 +59,7 @@ header .nav .links {
   border-bottom: 1px solid rgba(0,0,0, 0.2);
   border-left: 4px solid rgba(0,0,0, 0.2);
   color: #777;
-  background: linear-gradient(to right, rgb(167, 166, 166) 50%, aliceblue 50%);
+  background: linear-gradient(to right, rgb(175, 165, 231) 50%, aliceblue 50%);
   background-size: 200% 100%;
   background-position:right bottom;
 }
@@ -456,4 +456,28 @@ td:last-child {
     padding: 4px 8px;
     font-size: 12px;
   }
+}
+
+/* === PAGINATION === */
+.tableContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 16px;
+}
+
+.tableContainer .pagination {
+  margin: 0;
+  align-self: end;
+  justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+  color: var(--primary-color);
+  margin-right: 16px;
+}
+
+.pagination a:hover {
+  filter: brightness(0.3);
+  border-bottom: 1px solid var(--primary-color);
 }

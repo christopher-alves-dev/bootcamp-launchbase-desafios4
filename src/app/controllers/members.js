@@ -5,9 +5,36 @@ const Member = require('../models/Member');
 module.exports = {
   index(req, res) {
 
-    Member.all(function(members) {
-      return res.render("members/index", { members })
-    })
+    let { filter, page, limit } = req.query;
+
+    page = page || 1
+    // mesma coisa que if(page) {
+    //   page = page
+    // } else {
+    //   page = 1
+    // }
+
+    limit = limit || 2
+    let offset = limit * (page - 1);
+
+    const params = {
+      filter,
+      page,
+      limit,
+      offset,
+      callback(members) {
+
+        const pagination = {
+          total: Math.ceil(members[0].total / limit),
+          page
+        }
+
+        return res.render("members/index", { members, pagination, filter })
+      }
+    }
+
+    //Ao invés de colocar a callback function como parâmetro do paginate, nós podemos colocá-la como uma posição do params, que está sendo passado para dentro, ficando disponível também. 
+    Member.paginate(params)
   },
   create(req, res) {
 

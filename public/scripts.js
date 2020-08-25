@@ -51,3 +51,80 @@ for (item of menuItems) {
   }
   
 }
+
+//=== PAGINAÇÃO ===
+// totalPages = 20
+// selectedPage = 15 - página selecionada
+// [1, ..., 13, 14, 15, 16, 17, ..., 20]
+// 
+function paginate(selectedPage, totalPages) {
+
+  let pages = [],
+    oldPage
+
+  for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+
+
+    //primeira e última página(1 e 20)
+    const firstAndLastPage = currentPage == 1 || currentPage == totalPages;
+
+    //Mostrar o número das páginas posteriores, se a página atual for menor ou igual a página selecionada + 2. Neste caso a página selecionada é 15, então mostrará a página 16 e 17.  
+    const pagesAfterSelectedPage = currentPage <= selectedPage + 2;
+    
+    //Mostrar o número das páginas anteriores, se a página atual for maior ou igual a página selecionada - 2. Neste caso a página selecionada é 15, então mostrará a página 14 e 13.  
+    const pagesBeforerSelectedPage = currentPage >= selectedPage - 2;
+    
+    //Se a primeira página for = 1 ou a página atual for o total de páginas (20) OU as páginas antes da selecionada for maior ou igual a página selecionada - 2 E as páginas posteriores da selecionada for menor ou igual a página selecionada + 2.
+    if(firstAndLastPage || pagesBeforerSelectedPage && pagesAfterSelectedPage) {
+
+      if(oldPage && currentPage - oldPage > 2) {
+      // enviar para dentro de pages "..."
+        pages.push("...");
+      }
+
+      //Se existir a posição do anterior (oldPage) E a página atual menos a posição anterior for igual a 2.
+      if(oldPage && currentPage - oldPage == 2) {
+        pages.push(oldPage + 1);
+      }
+    
+      pages.push(currentPage)
+    
+      oldPage = currentPage
+    }
+  }
+
+  return pages
+}
+
+const pagination = document.querySelector(".pagination");
+function createPagination(pagination) {
+
+  const filter = pagination.dataset.filter;
+  const page = +pagination.dataset.page;
+  const total = +pagination.dataset.total;
+  const pages = paginate(page, total);
+
+  let elements = "";
+
+  for (let page of pages) {
+    if(String(page).includes("...")) {
+      elements+= `<span>${page}</span>`
+
+    } else {
+      if(filter) {
+        elements += `<a href="?page=${page}&filter=${filter}"> ${page}</a>`
+
+      } else {
+        elements += `<a href="?page=${page}"> ${page}</a>`
+
+      }
+    }
+  }
+
+  pagination.innerHTML = elements
+}
+
+if(pagination) {
+  createPagination(pagination);
+}
+
